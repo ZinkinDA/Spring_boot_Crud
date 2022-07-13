@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update_User</title>
+</head>
+<body>
+    <!--/*@thymesVar id="user" type="com.example.crud_spring.model.User"*/-->
+    <form th:method="post" th:action="@{/users/{id}(id = ${user.getId()})}" th:object="${user}">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" th:field="*{name}" id="name">
+            <br>
+            <label for="surName"> SurName </label>
+            <input type="text" th:field="*{surname}" id="surName">
+            <br>
+            <input type="submit" value="Update User">
+        </div>
+    </form>
+
+</body>
+</html>

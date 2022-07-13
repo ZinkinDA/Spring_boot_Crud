@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Person_or_index</title>
+</head>
+<body>
+<!--/*@thymesVar id="person" type="com.example.crud_spring.model.User"*/-->
+    <p th:text="${person.toString()}">PERSON</p>
+
+<a th:href="@{/users/{index}/update(index = ${person.getId()})}">Update User</a>
+
+<form th:method="delete" th:action="@{/users/{index}(index = ${person.getId()})}">
+    <input type = "submit" value="DeleteUser">
+</form>
+</body>
+</html>

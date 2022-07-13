@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+
+<!--/*@thymesVar id="users" type="com.example.crud_spring.controller.UserController"*/-->
+<div th:each="user : ${users}">
+    <a th:href="@{/users/{index}(index = ${user.getId()})}" th:text="${user.getName()}">USER</a>
+</div>
+
+<a th:href="@{users/new}">Add User</a>
+
+</body>
+</html>
