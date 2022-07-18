@@ -37,13 +37,13 @@ public class UserDaoImpl implements UserDao{
     @Transactional
     public void updateUser(int id,User user){
         entityManager.createNativeQuery("update testdb.users set name = '" + user.getName() + "',surname = '" + user.getSurname() +"' where id =" + id + ";").executeUpdate();
+
     }
 
     @Override
     @Transactional
     public void deleteUser(int id) {
         entityManager.remove(getUserIndex(id));
-
     }
 
 

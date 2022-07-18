@@ -2,40 +2,18 @@ package com.example.crud_spring.service;
 
 import com.example.crud_spring.dao.UserDao;
 import com.example.crud_spring.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class UserService {
-    public final UserDao userDao;
+public interface UserService {
+    void saveUser(User user);
 
-    @Autowired
-    public UserService(UserDao userDao) {
-        this.userDao = userDao;
-    }
-    public void saveUser(User user){
-        userDao.saveUser(user);
-    }
+    void deleteUser(Integer id);
 
-    public void deleteUser(Integer id){
-        userDao.deleteUser(id);
-    }
+    List<User> getAllUsers();
 
-    public List<User> getAllUsers(){
-        return userDao.getUserAll();
-    }
+    User getUserById(Integer id);
 
-    public User getUserById(Integer id){
-        return userDao.getUserIndex(id);
-    }
-
-    public void updateUser(int id,User user){
-        user.setId(id);
-        deleteUser(id);
-        saveUser(user);
-    }
-    
+    void updateUser(int id,User user);
 
 }
