@@ -1,6 +1,6 @@
 package com.example.crud_spring.service;
 
-import com.example.crud_spring.dao.UserRepository;
+import com.example.crud_spring.dao.UserDao;
 import com.example.crud_spring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,32 +9,32 @@ import java.util.List;
 
 @Service
 public class UserService {
-    public final UserRepository userRepository;
+    public final UserDao userDao;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserService(UserDao userDao) {
+        this.userDao = userDao;
     }
     public void saveUser(User user){
-        userRepository.saveAndFlush(user);
+        userDao.saveUser(user);
     }
 
     public void deleteUser(Integer id){
-        userRepository.delete(getUserById(id));
+        userDao.deleteUser(id);
     }
 
     public List<User> getAllUsers(){
-        return userRepository.findAll();
+        return userDao.getUserAll();
     }
 
     public User getUserById(Integer id){
-        return userRepository.getReferenceById(id);
+        return userDao.getUserIndex(id);
     }
 
     public void updateUser(int id,User user){
         user.setId(id);
-        userRepository.deleteById(id);
-        userRepository.save(user);
+        deleteUser(id);
+        saveUser(user);
     }
     
 
