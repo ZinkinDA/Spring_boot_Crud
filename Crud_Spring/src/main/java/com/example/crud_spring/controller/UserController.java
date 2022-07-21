@@ -47,7 +47,7 @@ public class UserController {
         userServiceImpl.updateUser(id,user);
         return "redirect:/users";
     }
-    @RequestMapping(value = {"/{index}"},method = RequestMethod.DELETE)
+    @DeleteMapping ("/{index}")
     public String delete(@PathVariable("index") int id){
         userServiceImpl.deleteUser(id);
         return "redirect:/users";
